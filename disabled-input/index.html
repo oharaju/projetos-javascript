@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DOM</title>
+  </head>
+
+  <body>
+    <h1>Habilitar/Desabilitar Input</h1>
+    <label>Email:</label>
+    <input onblur="disableEmail()" class="txtEmail"  disabled value="isabela@server.com">
+    <button onclick="editEmail()">Editar</button>
+
+    <script>
+      const txtEmail = document.querySelector('input.txtEmail');
+
+      function editEmail() {
+        txtEmail.disabled = false;
+        txtEmail.focus(); // quando clicar no botão vai dar o foco, e se clicar fora ele desabilita o input
+      }
+
+      function disableEmail() {
+        txtEmail.disabled = true;
+      }
+
+    </script>
+  </body>
+</html>
