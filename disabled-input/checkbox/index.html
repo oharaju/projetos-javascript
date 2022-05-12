@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br">
+
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Checked Termos</title>
+  </head>
+
+  <body>
+    <h1 id="title1">Verificar Termos</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+    <form>
+      <input type="text" class="txtNome" placeholder="nome"><br><br>
+      <input type="text" class="txtEmail" placeholder="email"><br><br>
+      <textarea cols="30" rows="10">Este contrato nos dá direito à ...</textarea><br>
+      <input type="checkbox" class="contrato" onchange="enableOrDisableButton()">
+      <label>Li e aceito o seguinte contrato</label><br><br>
+      <button class="cadastrar" disabled >cadastrar</button>
+    </form>
+
+    <script>
+
+      function enableOrDisableButton() {
+
+        const button = document.querySelector('.cadastrar');
+        const checkbox = document.querySelector('.contrato');
+        const checked = checkbox.checked;
+
+        if (checked) {
+          button.disabled = false; // desativado
+
+        } else {
+          button.disabled = true; // ativado
+        }
+      }
+
+    </script>
+  </body>
+</html>
