@@ -1,0 +1,42 @@
+body {
+  background-image: linear-gradient(to right, #A1A5FF, #AD85D1);
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  background-color: #ffffff;
+  width: 541px;
+  border-radius: 5px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px 20px;
+  height: 10%;
+}
+
+.title {
+  color: #6495ed;
+  text-align: center;
+  font-size: 30px;
+}
+
+.form {
+  width: 340px;
+  height: 40px;
+  border: 2px solid #94bbe9;
+  border-radius: 5px;
+  padding-left: 10px;
+  margin-right: 40px;
+}
+
+.addItens{
+  background: #8052EC;
+  border-radius: 5px;
+  height: 40px;
+  border: none;
+  padding: 0 15px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
