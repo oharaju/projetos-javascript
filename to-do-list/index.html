@@ -10,11 +10,17 @@
   <body>
     <div class="container">
       <h1 class="title">Lista de Tarefas</h1>
-      <form>
-        <input type="text" class="form"></input>
-        <button onclick="addTask()" class="addItens">Adicionar</button>
+      <form class="register">
+        <input type="text" class="taskInput"></input>
+        <button type="submit" class="addItem">Adicionar</button>
       </form>
-      <div class="resposta"></div>
+      <div>
+        <ul class="list">
+          <button> <i class="far fa-trash-alt"></i></button>
+        </ul>
+      </div>
     </div>
+    <script src="https://kit.fontawesome.com/b06f65387a.js" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
