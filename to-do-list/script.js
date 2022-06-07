@@ -10,7 +10,7 @@ function buttonRemoveEventListener() {
 
     buttonRemoveItem.addEventListener("click", function (event) {
       const buttonRemove = event.target;
-      const closest = buttonRemove.closest('tr');
+      const closest = buttonRemove.closest('li');
       closest.remove();
     });
   }
@@ -20,24 +20,25 @@ function buttonUpdateEventListener() {
   const buttonsUpdate = document.querySelectorAll(".updateItem");
 
   for (let i = 0; i <  buttonsUpdate.length; i++) {
-    const buttonUpdateItem =  buttonsUpdate[i];
+    const buttonUpdateItem = buttonsUpdate[i];
 
     buttonUpdateItem.addEventListener("click", function (event) {
       const buttonUpdate = event.target;
-      console.log(buttonUpdate)
+      const closestUpdate = buttonUpdate.closest('li');
+      closestUpdate.classList.add('updating');
     });
   }
-
-
 }
 
 function addNewItem() {
-  const item = document.createElement("tr");
+  const item = document.createElement("li");
   const text = taskInput.value;
-  const input = `<input type="text" value="${text}" class="hidden">`
-  const btnUpdate = '<button class="updateItem">editar</button>';
-  const btnRemove = '<button class="removeItem">remove</button>';
-  item.innerHTML = `<td>${text} ${input}</td><td>${btnUpdate}${btnRemove}</td>`;
+  const input = `<input type="text" value="${text}" class="inputEdit">`;
+  const btnSave = `<button class="save">salvar</button>`;
+  const btnUpdate = `<button class="updateItem">editar</button>`;
+  const btnRemove = `<button class="removeItem">remove</button>`;
+  const buttons = `<div>${btnSave}${btnUpdate}${btnRemove}</div>`;
+  item.innerHTML = `<span>${text}</span>${input}${buttons}`;
   list.appendChild(item);
 
   buttonUpdateEventListener();
