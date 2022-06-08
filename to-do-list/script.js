@@ -2,52 +2,40 @@ const form = document.querySelector(".register");
 const taskInput = document.querySelector(".taskInput");
 const list = document.querySelector(".list");
 
-function buttonRemoveEventListener() {
-  const buttonsRemove = document.querySelectorAll(".removeItem");
+function createEventListener(classButton, callback) {
+  const buttons = document.querySelectorAll(classButton);
 
-  for (let i = 0; i < buttonsRemove.length; i++) {
-    const buttonRemoveItem = buttonsRemove[i];
+  for (let i = 0; i < buttons.length; i++) {
+    const button = buttons[i];
 
-    buttonRemoveItem.addEventListener("click", function (event) {
-      const buttonRemove = event.target;
-      const closest = buttonRemove.closest('li');
-      closest.remove();
+    button.addEventListener("click", function (event) {
+      callback(event);
     });
   }
 }
 
-function buttonUpdateEventListener() {
-  const buttonsUpdate = document.querySelectorAll(".updateItem");
-
-  for (let i = 0; i <  buttonsUpdate.length; i++) {
-    const buttonUpdateItem = buttonsUpdate[i];
-
-    buttonUpdateItem.addEventListener("click", function (event) {
-      const buttonUpdate = event.target;
-      const closestUpdate = buttonUpdate.closest('li');
-      closestUpdate.classList.add('updating');
-    });
-  }
+function removeItem(e) {
+  const buttonRemove = e.target;
+  const closest = buttonRemove.closest('li');
+  closest.remove();
 }
 
-function buttonSaveEventListener() {
-  const buttonsSave = document.querySelectorAll('.save');
+function updateItem(e) {
+  const buttonUpdate = e.target;
+  const closestUpdate = buttonUpdate.closest('li');
+  closestUpdate.classList.add('updating');
+}
 
-  for (let i = 0; i <  buttonsSave.length; i++) {
-    const buttonSaveItem = buttonsSave[i];
+function saveItem(e) {
+  const buttonSave = e.target;
+  const saveItem = buttonSave.closest('li');
+  const valueInput = saveItem.querySelector('.inputEdit').value;
+  const elementText = saveItem.querySelector('span');
+  const valueText = elementText.innerHTML;
 
-    buttonSaveItem.addEventListener("click", function (event) {
-      const buttonSave = event.target;
-      const saveItem = buttonSave.closest('li');
-      const valueInput = saveItem.querySelector('.inputEdit').value;
-      const elementText = saveItem.querySelector('span');
-      const valueText = elementText.innerHTML;
-
-      if (valueInput != valueText && valueInput.length > 0) {
-        elementText.innerHTML = valueInput;
-        saveItem.classList.remove('updating');
-      }
-    });
+  if (valueInput != valueText && valueInput.length > 0) {
+    elementText.innerHTML = valueInput;
+    saveItem.classList.remove('updating');
   }
 }
 
@@ -62,9 +50,9 @@ function addNewItem() {
   item.innerHTML = `<span>${text}</span>${input}${buttons}`;
   list.appendChild(item);
 
-  buttonUpdateEventListener();
-  buttonRemoveEventListener();
-  buttonSaveEventListener();
+  createEventListener(".removeItem", removeItem);
+  createEventListener(".updateItem", updateItem);
+  createEventListener(".save", saveItem);
 }
 
 function clearInput() {
