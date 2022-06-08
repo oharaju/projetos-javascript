@@ -38,8 +38,15 @@ function buttonSaveEventListener() {
 
     buttonSaveItem.addEventListener("click", function (event) {
       const buttonSave = event.target;
-      const closestSave = buttonSave.closest('li');
-      const valueInput = closestSave.querySelector('.inputEdit').value
+      const saveItem = buttonSave.closest('li');
+      const valueInput = saveItem.querySelector('.inputEdit').value;
+      const elementText = saveItem.querySelector('span');
+      const valueText = elementText.innerHTML;
+
+      if (valueInput != valueText && valueInput.length > 0) {
+        elementText.innerHTML = valueInput;
+        saveItem.classList.remove('updating');
+      }
     });
   }
 }
