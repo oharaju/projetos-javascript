@@ -30,6 +30,20 @@ function buttonUpdateEventListener() {
   }
 }
 
+function buttonSaveEventListener() {
+  const buttonsSave = document.querySelectorAll('.save');
+
+  for (let i = 0; i <  buttonsSave.length; i++) {
+    const buttonSaveItem = buttonsSave[i];
+
+    buttonSaveItem.addEventListener("click", function (event) {
+      const buttonSave = event.target;
+      const closestSave = buttonSave.closest('li');
+      const valueInput = closestSave.querySelector('.inputEdit').value
+    });
+  }
+}
+
 function addNewItem() {
   const item = document.createElement("li");
   const text = taskInput.value;
@@ -43,6 +57,7 @@ function addNewItem() {
 
   buttonUpdateEventListener();
   buttonRemoveEventListener();
+  buttonSaveEventListener();
 }
 
 function clearInput() {
@@ -57,7 +72,7 @@ function handleSubmit() {
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  if (taskInput.value.length > 0){
+  if (taskInput.value.length > 0) {
     handleSubmit();
   }
 });
