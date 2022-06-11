@@ -22,8 +22,13 @@ function removeItem(e) {
 
 function updateItem(e) {
   const buttonUpdate = e.target;
-  const closestUpdate = buttonUpdate.closest('li');
-  closestUpdate.classList.add('updating');
+  const item = buttonUpdate.closest('li');
+  item.classList.add('updating');
+  const input = item.querySelector('.inputEdit');
+  input.focus();
+
+
+  console.log(input)
 }
 
 function saveItem(e) {
@@ -41,13 +46,13 @@ function saveItem(e) {
 
 function addNewItem() {
   const item = document.createElement("li");
-  const text = taskInput.value;
-  const input = `<input type="text" value="${text}" class="inputEdit">`;
+  const text = taskInput.value.toUpperCase();
+  const inputEdit = `<input type="text" value="${text}" class="inputEdit">`;
   const btnSave = `<button class="btnItem btnItem--saveColor save"><i class="fa-solid fa-floppy-disk"></i></button>`;
   const btnUpdate = `<button class="btnItem btnItem--updateColor updateItem"><i class="fa-solid fa-pencil"></i></button>`;
   const btnRemove = `<button class="btnItem btnItem--removeColor removeItem"><i class="fa fa-trash"></i></button>`;
   const buttons = `<div>${btnSave}${btnUpdate}${btnRemove}</div>`;
-  item.innerHTML = `<span>${text}</span>${input}${buttons}`;
+  item.innerHTML = `<span>${text}</span>${inputEdit}${buttons}`;
   list.appendChild(item);
 
   createEventListener(".removeItem", removeItem);
