@@ -43,9 +43,9 @@ function addNewItem() {
   const item = document.createElement("li");
   const text = taskInput.value;
   const input = `<input type="text" value="${text}" class="inputEdit">`;
-  const btnSave = `<button class="save">salvar</button>`;
-  const btnUpdate = `<button class="updateItem">editar</button>`;
-  const btnRemove = `<button class="removeItem">remove</button>`;
+  const btnSave = `<button class="btnItem btnItem--saveColor save"><i class="fa-solid fa-floppy-disk"></i></button>`;
+  const btnUpdate = `<button class="btnItem btnItem--updateColor updateItem"><i class="fa-solid fa-pencil"></i></button>`;
+  const btnRemove = `<button class="btnItem btnItem--removeColor removeItem"><i class="fa fa-trash"></i></button>`;
   const buttons = `<div>${btnSave}${btnUpdate}${btnRemove}</div>`;
   item.innerHTML = `<span>${text}</span>${input}${buttons}`;
   list.appendChild(item);
