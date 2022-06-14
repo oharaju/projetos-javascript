@@ -26,17 +26,15 @@ function updateItem(e) {
   item.classList.add('updating');
   const input = item.querySelector('.inputEdit');
   input.focus();
-
-
-  console.log(input)
 }
 
 function saveItem(e) {
   const buttonSave = e.target;
   const saveItem = buttonSave.closest('li');
-  const valueInput = saveItem.querySelector('.inputEdit').value;
+  const valueInput = saveItem.querySelector('.inputEdit').value.toUpperCase();
   const elementText = saveItem.querySelector('span');
   const valueText = elementText.innerHTML;
+
 
   if (valueInput != valueText && valueInput.length > 0) {
     elementText.innerHTML = valueInput;

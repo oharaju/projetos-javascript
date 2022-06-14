@@ -107,3 +107,7 @@ li:nth-child(even) {
 .save, .inputEdit {
   display: none;
 }
+
+.inputEdit {
+  text-transform: uppercase;
+}
