@@ -92,14 +92,18 @@ li:nth-child(even) {
   background-color: #3d963d;
 }
 
-.updating input {
+.updating .inputEdit {
   display: block;
   border: 1px solid #2a78d1;
   border-radius: 3px;
-  width: 50%;
+  padding: 5px;
 }
 
 .updating span {
+  display: none;
+}
+
+.updating .checkDone {
   display: none;
 }
 
@@ -118,4 +122,14 @@ li:nth-child(even) {
 .inputEdit {
   text-transform: uppercase;
   outline: none;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkDone span {
+  text-decoration: line-through;
 }
