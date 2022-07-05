@@ -2,32 +2,29 @@ const form = document.querySelector(".register");
 const taskInput = document.querySelector(".taskInput");
 const list = document.querySelector(".list");
 
-function createEventListener(classButton, callback) {
-  const buttons = document.querySelectorAll(classButton);
+function createEventListener(classElement, callback) {
+  const elements = document.querySelectorAll(classElement);
+  const lastElement = elements[elements.length - 1];
 
-  for (let i = 0; i < buttons.length; i++) {
-    const button = buttons[i];
-
-    button.addEventListener("click", function (event) {
-      callback(event);
-    });
-  }
+  lastElement.addEventListener("click", function(event) {
+    callback(event);
+  })
 }
 
-function doneItem(e) {
-  const inputDone = e.target;
-  const done = inputDone.closest('li');
+function doneItem(event) {
+  const checkbox = event.target;
+  const done = checkbox.closest('li');
   done.classList.toggle('checkDone');
 }
 
-function removeItem(e) {
-  const buttonRemove = e.target;
+function removeItem(event) {
+  const buttonRemove = event.target;
   const closest = buttonRemove.closest('li');
   closest.remove();
 }
 
-function updateItem(e) {
-  const buttonUpdate = e.target;
+function updateItem(event) {
+  const buttonUpdate = event.target;
   const item = buttonUpdate.closest('li');
   item.classList.add('updating');
   const input = item.querySelector('.inputEdit');
@@ -35,17 +32,16 @@ function updateItem(e) {
 
 }
 
-function saveItem(e) {
-  const buttonSave = e.target;
+function saveItem(event) {
+  const buttonSave = event.target;
   const saveItem = buttonSave.closest('li');
   const valueInput = saveItem.querySelector('.inputEdit').value.toUpperCase();
   const elementText = saveItem.querySelector('span');
   const valueText = elementText.innerHTML;
 
-
   if (valueInput != valueText && valueInput.length > 0) {
     elementText.innerHTML = valueInput;
-    saveItem.classList.remove('updating');
+    saveItem.classList.toggle('updating');
   }
 }
 
