@@ -1,17 +1,13 @@
-
 const form = document.querySelector('.register');
 const taskInput = document.querySelector('.taskInput');
-const list = document.querySelector('.list');
+let tasks = JSON.parse(localStorage.getItem('listTask')) || [];
 
-function addItem() {
-  const text = taskInput.value;
-  const itemTask = document.createElement('li');
-  document.querySelector('.list').appendChild(itemTask);
-  itemTask.innerHTML = `${text}`;
-
-  localStorage.setItem(list, '')
+function addTaskToLocalStorage() {
+  const currentTask = taskInput.value;
+  tasks.push(currentTask);
+  const newTasks = JSON.stringify(tasks);
+  localStorage.setItem('listTask', newTasks);
 }
-
 
 const clearInput = function() {
   taskInput.value = "";
@@ -19,6 +15,6 @@ const clearInput = function() {
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  addItem()
+  addTaskToLocalStorage()
   clearInput()
 });
